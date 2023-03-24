@@ -665,14 +665,16 @@ func (pool *TxPool) validateTx(tx *types.Transaction, local bool) error {
 		}
 	}
 
-	// Ensure the transaction has more gas than the basic tx fee.
-	intrGas, err := core.IntrinsicGas(tx.Data(), tx.AccessList(), tx.To() == nil, true, pool.istanbul, pool.shanghai)
-	if err != nil {
-		return err
-	}
-	if tx.Gas() < intrGas {
-		return core.ErrIntrinsicGas
-	}
+	/*
+		// Ensure the transaction has more gas than the basic tx fee.
+		intrGas, err := core.IntrinsicGas(tx.Data(), tx.AccessList(), tx.To() == nil, true, pool.istanbul, pool.shanghai)
+		if err != nil {
+			return err
+		}
+		if tx.Gas() < intrGas {
+			return core.ErrIntrinsicGas
+		}
+	*/
 	return nil
 }
 
